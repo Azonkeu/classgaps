@@ -2,24 +2,24 @@
   <div class="card">
     <div class="card-bodyshirt">
       <div class="card-img">
-        <img :src="getImgUrl(product.image)" alt="bag">
+        <img :src="getImgUrl(info.image)" alt="bag">
       </div>
       <form class="form">
-        <p class="title">{{ product.name }}</p>
-        <p class="descript">{{ product.description }}</p>
+        <p class="title">{{ info.name }}</p>
+        <p class="descript">{{ info.description }}</p>
         <div class="row margin">
-          <p class="cell">${{ product.price.USD }}</p>
-          <s class="cell grey">${{ product.price.NOK }}</s>
-          <p class="cell col">-{{ findpercent(product.price.USD, product.price.NOK) }}%</p>
+          <p class="cell">${{ info.price.USD }}</p>
+          <s class="cell grey">${{ info.price.NOK }}</s>
+          <p class="cell col">-{{ findpercent(info.price.USD, info.price.NOK) }}%</p>
         </div>
         <div class="row">
           <p class="quantity">Quantity:</p>
-          <label for="cell">
-            <input class="input" type="number" v-model.number="quantity">
+          <label for="amount">
+            <input class="input" type="number" v-model="total">
           </label>
         </div>
         <div class="cell">
-          <button @click="addToCart(product.name, quantity)" type="button" class="btn btn-light">
+          <button @click="addToCart(info.name, total)" type="button" class="btn btn-light">
             Add to cart
           </button>
         </div>
@@ -30,10 +30,10 @@
 
 <script>
 export default {
-  props: ['product', 'index', 'addToCart', 'getImgUrl', 'findpercent', 'search'],
+  props: ['info', 'index', 'addToCart', 'getImgUrl', 'findpercent'],
   data() {
     return {
-      quantity: 0,
+      total: 0,
     };
   },
 };

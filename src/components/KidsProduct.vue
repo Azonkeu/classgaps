@@ -15,11 +15,11 @@
             <p class="quantity">Quantity:</p>
           </div>
           <label for="cell-shirt">
-            <input class="input" type="number" v-model.number="quantity">
+            <input class="input" type="number" v-model="numb">
           </label>
         </div>
         <div class="cell">
-          <button @click="addToCart(kid.name, quantity)" type="button" class="btn btn-light">
+          <button @click="addToCart(kid.name, numb)" type="button" class="btn btn-light">
             Add to cart
           </button>
         </div>
@@ -30,10 +30,10 @@
 
 <script>
 export default {
-  props: ['kid', 'indx', 'addToCart', 'getKidImgUrl', 'findpercent', 'search'],
+  props: ['kid', 'index', 'addToCart', 'getKidImgUrl', 'findpercent'],
   data() {
     return {
-      quantity: 0,
+      numb: 0,
     };
   },
 };

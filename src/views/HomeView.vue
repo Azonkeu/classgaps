@@ -1,30 +1,29 @@
 <template>
   <main class="wrapperc">
     <h1 class="title">Our Products</h1>
-    <div class="wrappex">
+    <div class="search">
+      <label for="search">
+        <input
+          class="inp"
+          type="text"
+          v-model="search"
+          placeholder="Search..."
+        >
+      </label>
+      <i class="fa-solid fa-magnifying-glass" style="color: gray"></i>
+    </div>
       <div class="card-container">
-        <ShirtBlock
-          v-for="(item, ind) in shirts"
-          :key="item.id"
-          :ind="ind"
-          :item="item"
-          :addToCart="addToCart"
-          :getShirtImgUrl="getShirtImgUrl"
-          :findpercent="findpercent"
-        />
-      </div>
-      <div class="card-container">
-        <ProductCard
-          v-for="(product, index) in inventory"
-          :key="product.id"
-          :index="index"
-          :product="product"
+        <HomeBlock
+          v-for="(homes, inx) in searchProd"
+          :key="homes.id"
+          class="card"
+          :in="inx"
+          :homes="homes"
           :addToCart="addToCart"
           :getImgUrl="getImgUrl"
           :findpercent="findpercent"
         />
       </div>
-    </div>
   </main>
   <footer>
     <FooterBlock />
@@ -33,33 +32,45 @@
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard.vue';
-import ShirtBlock from '@/components/ShirtBlock.vue';
+import HomeBlock from '@/components/HomeBlock.vue';
 import FooterBlock from '@/components/FooterBlock.vue';
 
 export default {
-  props: ['inventory', 'shirts', 'addToCart', 'getImgUrl', 'getShirtImgUrl', 'search', 'findpercent'],
+  props: ['inventory', 'addToCart', 'getImgUrl', 'findpercent'],
   components: {
-    ProductCard,
-    ShirtBlock,
+    HomeBlock,
     FooterBlock,
+  },
+  data() {
+    return {
+      search: '',
+      invent: this.inventory,
+    };
+  },
+  computed: {
+    searchProd() {
+      let arr = [];
+      if (this.search !== '') {
+        arr = this.invent.filter((p) => p.name.toLowerCase().includes(this.search.toLowerCase())
+          || p.category.toLowerCase().includes(this.search.toLowerCase())
+          || p.price.USD === Number(this.search));
+      } else {
+        arr = this.invent;
+      }
+      return arr;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-.wrapper {
-  position: relative;
-  padding-top: 1rem;
-}
-
 .title {
   text-align: center;
-  margin: 2% auto 0 auto;
+  margin: 4% auto 0 auto;
   font-size: 1.6em;
 }
 
-.wrappex {
+.wrapperc {
   display: flex;
   flex-direction: column;
   @media only screen and (min-width:992px) {
@@ -76,4 +87,25 @@ export default {
     grid-template-columns: 30% 30% 30%;
   }
 }
+
+.search {
+  background-color: #fff;
+  margin: 4% 0 0 0;
+  border-radius: 30px;
+  @media only screen and (min-width:992px) {
+    width: 40%;
+    border: 1px solid gray;
+    background-color: #fff;
+    margin: 0 0 0 auto;
+    border-radius: 30px;
+  }
+}
+
+.inp {
+  width: 90%;
+  padding: 1%;
+  border: none;
+  margin-left: 2%;
+}
+
 </style>

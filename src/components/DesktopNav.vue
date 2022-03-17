@@ -7,13 +7,13 @@
           <p class="logo-textx">torex</p>
         </div>
         <ul v-show="!mobile" class="navigation">
-          <li><router-link class="link" to="/">Home</router-link></li>
+          <li class="lix"><router-link class="link" to="/">Home</router-link></li>
           <li><router-link class="link" to="/men">Men</router-link></li>
           <li><router-link class="link" to="/women">Women</router-link></li>
           <li><router-link class="link" to="/kids">Kids</router-link></li>
           <li><router-link  class="link" to="/home-&-living">Home & Living</router-link></li>
           <li>
-            <button @click="toggleSidebar" class="top-bar-cart-link">
+            <button v-show="!mobile" @click="toggle" class="top-bar-cart-link">
               <i class="fa-solid fa-cart-shopping fa-2x" style="color: white"></i>
               <span class="white">Cart ({{ totalQuantity }})</span>
             </button>
@@ -27,28 +27,37 @@
             v-show="mobile"
             :class="{'icon-active' : mobileNav}"
           >
-            <i class="fas fa-bars fa-2x"></i>
+            <i class="fas fa-bars fa-2x" style="color: white"></i>
           </button>
         </div>
         <transition name="mobile-nav">
           <div>
           <div class="top-bar-cart">
-            <button v-show="mobile" @click="toggleSidebar" class="top-bar-cart-link">
+            <button v-if="mobile" @click="toggle" class="top-bar-cart-link">
               <i class="fa-solid fa-cart-shopping fa-2x" style="color: white"></i>
               <span class="white">Cart ({{ totalQuantity }})</span>
             </button>
           </div>
           <ul v-show="mobileNav" class="dropdown-nav" id="dropdown">
-            <li><router-link class="link" to="/" @click="closeDropdown">Home</router-link></li>
-            <li><router-link class="link" to="/men" @click="closeDropdown">Men</router-link></li>
-            <li>
-              <router-link class="link" to="/women" @click="closeDropdown">
+            <li class="lin">
+              <router-link class="lin" to="/" @click="closeDropdown">
+                Home
+              </router-link>
+            </li>
+            <li class="lin">
+            <router-link class="lin" to="/men" @click="closeDropdown">Men</router-link></li>
+            <li class="lin">
+              <router-link class="lin" to="/women" @click="closeDropdown">
                 Women
               </router-link>
             </li>
-            <li><router-link class="link" to="/kids" @click="closeDropdown">Kids</router-link></li>
-            <li>
-              <router-link class="link" to="/home-&-living" @click="closeDropdown">
+            <li class="lin">
+              <router-link class="lin" to="/kids" @click="closeDropdown">
+                Kids
+              </router-link>
+            </li>
+            <li class="lin">
+              <router-link class="lin" to="/home-&-living" @click="closeDropdown">
                 Home & Living
               </router-link>
             </li>
@@ -61,11 +70,11 @@
     </div>
   </div>
   <SideBar
-    v-if="showSidebar"
-    :toggle="toggleSidebar"
+    :toggle="toggle"
     :cart="cart"
-    :inventory="datax"
-    :remove="removeItem"
+    :inventory="inventory"
+    :removeItem="removeItem"
+    :showSidebar="showSidebar"
   />
 </template>
 
@@ -73,7 +82,7 @@
 import SideBar from './SideBar.vue';
 
 export default {
-  props: ['datax', 'toggleSidebar', 'totalQuantity', 'cart', 'removeItem', 'showSidebar'],
+  props: ['inventory', 'toggle', 'totalQuantity', 'cart', 'removeItem', 'showSidebar'],
   components: {
     SideBar,
   },
@@ -92,14 +101,6 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
-  },
-  computed: {
-    filtered() {
-      // eslint-disable-next-line array-callback-return
-      return this.datax.filter((dat) => {
-        dat.map((da) => da.name.match(this.search));
-      });
-    },
   },
   methods: {
     toggleMobileNav() {
@@ -176,7 +177,7 @@ header {
     }
 
     li {
-      margin-left: 4%;
+      margin-left: 5%;
     }
 
     .link {
@@ -222,7 +223,7 @@ header {
       display: flex;
       align-items: center;
       flex: 1;
-      justify-content: flex-end;
+      //justify-content: flex-end;
     }
 
     .dropdown-nav {
@@ -230,21 +231,14 @@ header {
       flex-direction: column;
       position: fixed;
       background-color: #f44f78;
-      width: 90%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-top: 5%;
+      padding-left: 5%;
+      width: 70%;
       height: 100%;
       top: 0;
       right: 0;
-
-      ul {
-        justify-content: flex-start;
-        margin: 4% 0 0 0;
-      }
-      li {
-        margin: 4% 0 0 0;
-        .link-mobile {
-          color: #fff;
-        }
-      }
     }
 
     .mobile-nav-enter-active,
@@ -340,6 +334,7 @@ header {
   flex-direction: row;
   align-items: center;
   width: 32%;
+  margin-right: 6%;
 }
 
 .logo-textx {
@@ -348,4 +343,20 @@ header {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
 }
+
+.lin {
+  margin-top: 6%;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.lin:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.lix {
+  margin-left: 9%;
+}
+
 </style>

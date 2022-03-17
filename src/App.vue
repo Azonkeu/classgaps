@@ -1,28 +1,27 @@
 <template>
   <div id="app">
     <DesktopNav
-      :toggleSidebar="toggleSidebar"
+      :toggle="toggleSidebar"
       :totalQuantity="totalQuantity"
       :showSidebar="showSidebar"
       :cart="cart"
+      :inventory="inventory"
+      :removeItem="removeItem"
     />
   </div>
   <router-view
     :inventory="inventory"
-    :shirts="shirts"
+    :men="menData"
+    :women="womenData"
+    :kids="kidData"
+    :houses="houseData"
+    :showSidebar="showSidebar"
     :addToCart="addToCart"
     :getImgUrl="getImgUrl"
     :getShirtImgUrl="getShirtImgUrl"
     :getKidImgUrl="getKidImgUrl"
-    :getMenImgUrl="getMenImgUrl"
     :getHouseImgUrl="getHouseImgUrl"
-    :getWomenImgUrl="getWomenImgUrl"
-    :house="house"
-    :kids="kids"
-    :items="items"
-    :shoes="shoes"
     :findpercent="findpercent"
-    :datax="datax"
     :removeItem="removeItem"
     :cart="cart"
   />
@@ -30,6 +29,10 @@
 
 <script>
 import DesktopNav from './components/DesktopNav.vue';
+import men from './assets/men';
+import women from './assets/women';
+import kids from './assets/kids';
+import house from './assets/house';
 import data from './assets/data';
 
 export default {
@@ -40,25 +43,18 @@ export default {
     return {
       mobileView: true,
       showNav: false,
-      datax: data,
       cart: {},
-      inventory: data[0],
-      shirts: data[1],
-      house: data[2],
-      kids: data[3],
-      items: data[4],
-      shoes: data[5],
+      inventory: data,
+      menData: men,
+      womenData: women,
+      kidData: kids,
+      houseData: house,
       showSidebar: false,
     };
   },
   computed: {
     totalQuantity() {
       return Object.values(this.cart).reduce((acc, curr) => acc + curr, 0);
-    },
-    filtered() {
-      return this.datax.filter((dat) => {
-        dat.map((da) => da.name.match(this.search));
-      });
     },
   },
   methods: {
@@ -71,22 +67,20 @@ export default {
       return Math.floor((dif * 100) / number);
     },
     getImgUrl(pet) {
+      // eslint-disable-next-line import/no-dynamic-require
       return require(`./assets/images/bag/${pet}`);
     },
     getShirtImgUrl(pet) {
+      // eslint-disable-next-line import/no-dynamic-require
       return require(`./assets/images/shirt/${pet}`);
     },
     getKidImgUrl(pet) {
+      // eslint-disable-next-line import/no-dynamic-require
       return require(`./assets/images/kids/${pet}`);
     },
-    getMenImgUrl(pet) {
-      return require(`./assets/images/menshoes/${pet}`);
-    },
     getHouseImgUrl(pet) {
+      // eslint-disable-next-line import/no-dynamic-require
       return require(`./assets/images/house/${pet}`);
-    },
-    getWomenImgUrl(pet) {
-      return require(`./assets/images/shoes/${pet}`);
     },
     toggleSidebar() {
       this.showSidebar = !this.showSidebar;

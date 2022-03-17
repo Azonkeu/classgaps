@@ -1,27 +1,26 @@
 <template>
   <main class="wrap-women">
     <h1 class="title">Women Outfits</h1>
+    <div class="search">
+      <label for="search">
+        <input
+          class="inp"
+          type="text"
+          v-model="search"
+          placeholder="Search..."
+        >
+      </label>
+      <i class="fa-solid fa-magnifying-glass" style="color: gray"></i>
+    </div>
      <div class="card-container">
       <ProductCard
-        v-for="(product, index) in inventory"
-        :key="product.id"
+        v-for="(info, index) in searchItems"
+        :key="info.id"
         class="card"
         :index="index"
-        :product="product"
+        :info="info"
         :addToCart="addToCart"
         :getImgUrl="getImgUrl"
-        :findpercent="findpercent"
-      />
-    </div>
-    <div class="card-container">
-      <WomenShoes
-        v-for="(women, num) in shoes"
-        :key="women.id"
-        class="card"
-        :num="num"
-        :women="women"
-        :addToCart="addToCart"
-        :getWomenImgUrl="getWomenImgUrl"
         :findpercent="findpercent"
       />
     </div>
@@ -34,15 +33,32 @@
 
 <script>
 import ProductCard from '@/components/ProductCard.vue';
-import WomenShoes from '@/components/WomenShoes.vue';
 import FooterBlock from '@/components/FooterBlock.vue';
 
 export default {
-  props: ['inventory', 'shoes', 'addToCart', 'getWomenImgUrl', 'getImgUrl', 'findpercent', 'search'],
+  props: ['women', 'addToCart', 'getWomenImgUrl', 'getImgUrl', 'findpercent'],
   components: {
     ProductCard,
-    WomenShoes,
     FooterBlock,
+  },
+  data() {
+    return {
+      search: '',
+      invent: this.women,
+    };
+  },
+  computed: {
+    searchItems() {
+      let arr = [];
+      if (this.search !== '') {
+        arr = this.invent.filter((p) => p.name.toLowerCase().includes(this.search.toLowerCase())
+          || p.category.toLowerCase().includes(this.search.toLowerCase())
+          || p.price.USD === Number(this.search));
+      } else {
+        arr = this.invent;
+      }
+      return arr;
+    },
   },
 };
 </script>
@@ -54,7 +70,6 @@ export default {
   @media only screen and (min-width:992px) {
     align-items: center;
     max-width: 100%;
-    margin: 0 0 0 2%;
   }
 }
 
