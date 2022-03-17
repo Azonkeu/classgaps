@@ -17,11 +17,11 @@
             <p class="quantity">Quantity:</p>
           </div>
           <label for="cell-shirt">
-            <input class="input" type="number" v-model.number="quantity">
+            <input class="input" type="number" v-model="number">
           </label>
         </div>
         <div class="cell">
-           <button @click="addToCart(housing.name, quantity)" type="button" class="btn-light">
+           <button @click="addToCart(housing.name, number)" type="button" class="btn-light">
             Add to cart
           </button>
         </div>
@@ -32,10 +32,10 @@
 
 <script>
 export default {
-  props: ['housing', 'inx', 'addToCart', 'getHouseImgUrl', 'findpercent', 'search'],
+  props: ['housing', 'index', 'addToCart', 'getHouseImgUrl', 'findpercent'],
   data() {
     return {
-      quantity: 0,
+      number: 0,
     };
   },
 };

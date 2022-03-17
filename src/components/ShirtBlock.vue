@@ -15,7 +15,7 @@
         <div class="row">
           <p class="quantity">Quantity:</p>
           <label for="cell">
-            <input class="input" type="number" v-model.number="quantity">
+            <input class="input" type="number" v-model="quantity">
           </label>
         </div>
         <div class="cell">
@@ -31,7 +31,7 @@
 <script>
 
 export default {
-  props: ['item', 'ind', 'addToCart', 'getShirtImgUrl', 'findpercent', 'search'],
+  props: ['item', 'index', 'addToCart', 'getShirtImgUrl', 'findpercent'],
   data() {
     return {
       quantity: 0,

@@ -1,25 +1,25 @@
 <template>
   <div class="card-shirt">
-    <div class="card-bodyshirt">
-      <img :src="getMenImgUrl(menshoe.image)" alt="shirt">
+    <div class="card-bodyshirt" >
+      <div class="card-img">
+        <img :src="getImgUrl(homes.image)" alt="image">
+      </div>
       <form class="form">
-        <p class="title">{{ menshoe.name }}</p>
-        <p class="descript">{{ menshoe.description }}</p>
-        <div class="row">
-          <p class="cell">${{ menshoe.price.USD }}</p>
-          <s class="cell grey">${{ menshoe.price.NOK }}</s>
-          <p class="cell col">-{{ findpercent(menshoe.price.USD, menshoe.price.NOK) }}%</p>
+        <p class="title">{{ homes.name }}</p>
+        <p class="descript">{{ homes.description }}</p>
+        <div class="row margin">
+          <p class="cell">${{ homes.price.USD }}</p>
+          <s class="cell grey">${{ homes.price.NOK }}</s>
+          <p class="cell col">-{{ findpercent(homes.price.USD, homes.price.NOK) }}%</p>
         </div>
         <div class="row">
-          <div class="cell-shirt">
-            <p class="quantity">Quantity:</p>
-          </div>
-          <label for="cell-shirt">
-            <input class="input" type="number" v-model.number="quantity">
+          <p class="quantity">Quantity:</p>
+          <label for="cell">
+            <input class="input" type="number" v-model="amount">
           </label>
         </div>
         <div class="cell">
-          <button @click="addToCart(menshoe.name, quantity)" type="button" class="btn-light">
+          <button @click="addToCart(homes.name, amount)" type="button" class="btn-light">
             Add to cart
           </button>
         </div>
@@ -29,20 +29,21 @@
 </template>
 
 <script>
+
 export default {
-  props: ['menshoe', 'enshoe', 'addToCart', 'getMenImgUrl', 'findpercent', 'search'],
+  props: ['homes', 'inx', 'addToCart', 'getImgUrl', 'findpercent'],
   data() {
     return {
-      quantity: 0,
+      amount: 0,
     };
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.card-shirt {
+<style lang="scss">
+.card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   max-width: 100%;
   align-items: center;
   padding: 4% 8% 0 8%;
@@ -51,8 +52,8 @@ export default {
 .card-bodyshirt {
   display: flex;
   flex-direction: column;
-  background-color: #e5e4ec;
   align-items: center;
+  background-color: #e5e4ec;
   width: 100%;
   box-shadow: 0px 5px 8px rgba(0,0,0,.3);
 }

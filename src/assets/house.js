@@ -1,0 +1,148 @@
+const house = [
+  {
+    id: 1,
+    name: 'Sofa',
+    description: 'Thelma Tote bag synthetic black',
+    image: 'sof.png',
+    price: {
+      USD: 350.66,
+      NOK: 400.99,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 2,
+    name: 'Sofa',
+    description: 'Animal PU Structure Satchel',
+    image: 'resof.png',
+    price: {
+      USD: 199.55,
+      NOK: 218.42,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 3,
+    name: 'Sofa',
+    description: 'Fanny pack synthetic black',
+    image: 'brownsof.png',
+    price: {
+      USD: 175.20,
+      NOK: 190.96,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 4,
+    name: 'LACOSTE',
+    description: 'Textured Handheld Bag',
+    image: 'livin.png',
+    price: {
+      USD: 120.55,
+      NOK: 145.93,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 5,
+    name: 'Lavie',
+    description: 'Solid Handheld Bag',
+    image: 'tach.png',
+    price: {
+      USD: 200.04,
+      NOK: 267.50,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 6,
+    name: 'Emporio Armani',
+    description: 'Roberta Handbag polyester',
+    image: 'chan.png',
+    price: {
+      USD: 90.92,
+      NOK: 110.54,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 7,
+    name: 'Van Heusen',
+    description: 'Women Solid Laptop Bag',
+    image: 'whites.png',
+    price: {
+      USD: 120.23,
+      NOK: 140.63,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 8,
+    name: 'TV',
+    description: 'Women Zip around Bag',
+    image: 'tv.png',
+    price: {
+      USD: 400.94,
+      NOK: 600.29,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 9,
+    name: 'Lamp',
+    description: 'Animal PU Structure Satchel',
+    image: 'dini.png',
+    price: {
+      USD: 89.15,
+      NOK: 110.33,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 10,
+    name: 'Stand',
+    description: 'Charlie Handbag Nappa leather',
+    image: 'stan.png',
+    price: {
+      USD: 99.77,
+      NOK: 120.47,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 11,
+    name: 'Bed',
+    description: 'Women Solid Sling Bag',
+    image: 'bex.png',
+    price: {
+      USD: 300.57,
+      NOK: 450.99,
+    },
+    category: 'house',
+    type: 'house',
+  },
+  {
+    id: 12,
+    name: 'Bed',
+    description: 'Charlie Handbag Nappa leather',
+    image: 'bed.png',
+    price: {
+      USD: 350.95,
+      NOK: 500.26,
+    },
+    category: 'house',
+    type: 'House',
+  },
+];
+
+export default house;

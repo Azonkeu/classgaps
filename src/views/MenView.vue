@@ -1,27 +1,26 @@
 <template>
   <main class="wrap-menx">
     <h1 class="title">Men Outfits</h1>
+    <div class="search">
+      <label for="search">
+        <input
+          class="inp"
+          type="text"
+          v-model="search"
+          placeholder="Search..."
+        >
+      </label>
+      <i class="fa-solid fa-magnifying-glass" style="color: gray"></i>
+    </div>
     <div class="men-cards">
       <ShirtBlock
-        v-for="(item, ind) in shirts"
+        v-for="(item, index) in searchItems"
         :key="item.id"
         class="card"
-        :ind="ind"
+        :index="index"
         :item="item"
         :addToCart="addToCart"
         :getShirtImgUrl="getShirtImgUrl"
-        :findpercent="findpercent"
-      />
-    </div>
-    <div class="men-cards">
-      <MenShoes
-        v-for="(menshoe, enshoe) in items"
-        :key="menshoe.id"
-        class="men"
-        :enshoe="enshoe"
-        :menshoe="menshoe"
-        :addToCart="addToCart"
-        :getMenImgUrl="getMenImgUrl"
         :findpercent="findpercent"
       />
     </div>
@@ -34,15 +33,32 @@
 
 <script>
 import ShirtBlock from '@/components/ShirtBlock.vue';
-import MenShoes from '@/components/MenShoes.vue';
 import FooterBlock from '@/components/FooterBlock.vue';
 
 export default {
-  props: ['items', 'shirts', 'addToCart', 'getMenImgUrl', 'getShirtImgUrl', 'findpercent', 'search'],
+  props: ['men', 'addToCart', 'getShirtImgUrl', 'findpercent'],
   components: {
     ShirtBlock,
-    MenShoes,
     FooterBlock,
+  },
+  data() {
+    return {
+      search: '',
+      invent: this.men,
+    };
+  },
+  computed: {
+    searchItems() {
+      let arr = [];
+      if (this.search !== '') {
+        arr = this.invent.filter((p) => p.name.toLowerCase().includes(this.search.toLowerCase())
+          || p.category.toLowerCase().includes(this.search.toLowerCase())
+          || p.price.USD === Number(this.search));
+      } else {
+        arr = this.invent;
+      }
+      return arr;
+    },
   },
 };
 </script>
@@ -54,7 +70,6 @@ export default {
   @media only screen and (min-width:992px) {
     align-items: center;
     max-width: 100%;
-    margin: 0 0 0 2%;
   }
 }
 

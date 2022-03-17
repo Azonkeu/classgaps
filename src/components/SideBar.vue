@@ -1,71 +1,47 @@
-/* eslint-disable no-loop-func */
-/* eslint-disable no-plusplus */
 <template>
-  <aside class="cart-container">
-    <div class="cart">
-      <h1 class="cart-title spread">
-        <span>
-          Cart
-          <i class="icofont-cart-alt icofont-1x"></i>
-        </span>
-        <button @click="toggle" class="cart-close">&times;</button>
+  <div v-if="showSidebar" class="cart-containe">
+    <div class="containe">
+      <h1 class="cart-tile">
+        Shopping Cart
       </h1>
-
-      <div class="cart-body">
-        <table class="cart-table">
-          <thead>
-            <tr>
-              <th><span class="sr-only">Product Image</span></th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Total</th>
-              <th><span class="sr-only">Actions</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(quantity, key, i) in cart" :key="i">
-              <td><i class="icofont-carrot icofont-3x"></i></td>
-              <td>{{ key }}</td>
-              <td>${{ getPrice(key) }}</td>
-              <td class="center">{{ quantity }}</td>
-              <td>${{ quantity * getPrice(key) }}</td>
-              <td class="center">
-                <button @click="remove(key)" class="btn btn-light cart-remove">
-                  &times;
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="center" v-if="!Object.keys(cart).length"><em>No items in cart</em></p>
-        <div class="spread">
-          <span><strong>Total:</strong> ${{ calculateTotal() }}</span>
-          <button class="btn btn-light">Checkout</button>
+      <button @click="toggle" class="cart-close">
+        <i class="fa-solid fa-xmark fa-2x" style="color: white"></i>
+      </button>
+    </div>
+    <div class="cat-body">
+      <div class="styled-table tab">
+        <p class="list-item first">Product</p>
+        <p class="list-item sec">Price</p>
+        <p class="list-item sec">Qty</p>
+        <p class="list-item sec">Total</p>
+      </div>
+      <div>
+        <div class="styled-table tablex" v-for="(quantity, key, i) in cart" :key="i">
+          <p class="list-item first">{{ key }}</p>
+          <p class="list-item">${{ getPrice(key) }}</p>
+          <p class="list-item">{{ quantity }}</p>
+          <p class="list-item">${{ quantity * getPrice(key) }}</p>
+          <button @click="removeItem(key)" class="remove">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
       </div>
     </div>
-  </aside>
+    <p class="center no" v-if="!Object.keys(cart).length"><em>No items in cart</em></p>
+    <div class="sprea">
+      <span><strong>Total:</strong> ${{ calculateTotal() }}</span>
+      <button class="btn-ligh">Checkout</button>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['toggle', 'cart', 'inventory', 'remove'],
+  props: ['toggle', 'cart', 'inventory', 'removeItem', 'showSidebar'],
   methods: {
     getPrice(name) {
-      let core = 0;
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < this.inventory.length; i++) {
-        // eslint-disable-next-line no-plusplus
-        for (let j = 0; j < this.inventory[i].length; j++) {
-          // eslint-disable-next-line no-loop-func
-          core = this.inventory[i][j].map((pro) => {
-            pro.find((p) => p.name === name);
-            return core.price.USD;
-          });
-        }
-      }
+      const product = this.inventory.find((p) => p.name === name);
+      return product.price.USD;
     },
     calculateTotal() {
       const total = Object.entries(this.cart).reduce((
@@ -74,22 +50,92 @@ export default {
         // eslint-disable-next-line no-unused-vars
         index,
       ) => acc + (curr[1] * this.getPrice(curr[0])), 0);
-      return total.toFixed(2);
+      return Math.floor(total.toFixed(2));
     },
   },
 };
 </script>
 
 <style lang="scss">
+.cart-containe {
+  background-color: #1a7bbc;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+.containe {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
 .cart-close {
-  background: transparent;
-  border: 0px;
-  border-radius: 5px;
-  padding: 0px 13px;
-  color: #fcf5d8;
-  font-weight: bold;
-  &:hover {
-    background: blue
+  background-color: transparent;
+  border: none;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.cat-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.styled-table {
+  display: flex;
+  flex-direction: row;
+}
+
+.tab {
+  margin-top: 3%;
+  font-size: 1.1em;
+}
+
+.tablex {
+  margin-top: 1%;
+}
+
+.list-item {
+  width: 21%;
+}
+
+.first {
+  width: 30%;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.sec {
+  font-weight: 600;
+}
+
+.sprea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6%;
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-ligh {
+  padding: 2%;
+  width: 60%;
+  font-size: 1.01em;
+  margin-top: 2%;
+  color: #fff;
+  border-color: rgb(241, 33, 102);
+  background-color: rgb(241, 33, 102);
+  @media only screen and (min-width:992px) {
+    padding: 1%;
+    width: 25%;
   }
 }
 </style>

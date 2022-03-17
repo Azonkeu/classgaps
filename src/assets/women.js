@@ -1,0 +1,148 @@
+const women = [
+  {
+    id: 1,
+    name: 'Versace Jeans Couture',
+    description: 'Thelma Tote bag synthetic black',
+    image: 'greybag.png',
+    price: {
+      USD: 250.26,
+      NOK: 360.43,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 2,
+    name: 'Lavie',
+    description: 'Animal PU Structure Satchel',
+    image: 'brownbag.png',
+    price: {
+      USD: 120.44,
+      NOK: 180.82,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 3,
+    name: 'Replay',
+    description: 'Fanny pack synthetic black',
+    image: 'goldbag.png',
+    price: {
+      USD: 195.20,
+      NOK: 220.66,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 4,
+    name: 'LACOSTE',
+    description: 'Textured Handheld Bag',
+    image: 'secblack.png',
+    price: {
+      USD: 95.95,
+      NOK: 145.33,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 5,
+    name: 'Lavie',
+    description: 'Solid Handheld Bag',
+    image: 'blackbag.png',
+    price: {
+      USD: 200.04,
+      NOK: 267.50,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 6,
+    name: 'Emporio Armani',
+    description: 'Roberta Handbag polyester',
+    image: 'lastbag.png',
+    price: {
+      USD: 210.82,
+      NOK: 280.74,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 7,
+    name: 'Van Heusen',
+    description: 'Women Solid Laptop Bag',
+    image: 'twobags.png',
+    price: {
+      USD: 160.53,
+      NOK: 219.43,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 8,
+    name: 'MANGO',
+    description: 'Women Zip around Bag',
+    image: 'baggold.png',
+    price: {
+      USD: 145.94,
+      NOK: 250.29,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 9,
+    name: 'Allen Solly',
+    description: 'Animal PU Structure Satchel',
+    image: 'brbag.png',
+    price: {
+      USD: 130.45,
+      NOK: 200.53,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 10,
+    name: 'Coach',
+    description: 'Charlie Handbag Nappa leather',
+    image: 'bluebag.png',
+    price: {
+      USD: 95.95,
+      NOK: 96.53,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 11,
+    name: 'Baggit',
+    description: 'Women Solid Sling Bag',
+    image: 'secbluebag.png',
+    price: {
+      USD: 79.61,
+      NOK: 65.74,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+  {
+    id: 12,
+    name: 'Coach',
+    description: 'Charlie Handbag Nappa leather',
+    image: 'pinkwhite.png',
+    price: {
+      USD: 95.95,
+      NOK: 96.53,
+    },
+    category: 'women',
+    type: 'bag',
+  },
+];
+
+export default women;

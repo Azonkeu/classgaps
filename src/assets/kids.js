@@ -1,0 +1,136 @@
+const kids = [
+  {
+    id: 1,
+    name: 'Kid',
+    description: 'Thelma Tote bag synthetic black',
+    image: 'nou.png',
+    price: {
+      USD: 350.66,
+      NOK: 400.99,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 2,
+    name: 'Kid',
+    description: 'Animal PU Structure Satchel',
+    image: 'skirt.png',
+    price: {
+      USD: 199.55,
+      NOK: 218.42,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 3,
+    name: 'Kid',
+    description: 'Fanny pack synthetic black',
+    image: 'three.png',
+    price: {
+      USD: 175.20,
+      NOK: 190.96,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 4,
+    name: 'kid',
+    description: 'Textured Handheld Bag',
+    image: 'snk.png',
+    price: {
+      USD: 120.55,
+      NOK: 145.93,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 5,
+    name: 'kid',
+    description: 'Solid Handheld Bag',
+    image: 'skir.png',
+    price: {
+      USD: 200.04,
+      NOK: 267.50,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 6,
+    name: 'kid',
+    description: 'Roberta Handbag polyester',
+    image: 'shoki.png',
+    price: {
+      USD: 90.92,
+      NOK: 110.54,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 7,
+    name: 'kid',
+    description: 'Women Solid Laptop Bag',
+    image: 'shir.png',
+    price: {
+      USD: 120.23,
+      NOK: 140.63,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 8,
+    name: 'kid',
+    description: 'Women Zip around Bag',
+    image: 'pisk.png',
+    price: {
+      USD: 400.94,
+      NOK: 600.29,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 9,
+    name: 'kid',
+    description: 'Animal PU Structure Satchel',
+    image: 'kish.png',
+    price: {
+      USD: 89.15,
+      NOK: 110.33,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 10,
+    name: 'kid',
+    description: 'Charlie Handbag Nappa leather',
+    image: 'kidtre.png',
+    price: {
+      USD: 99.77,
+      NOK: 120.47,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+  {
+    id: 11,
+    name: 'kid',
+    description: 'Women Solid Sling Bag',
+    image: 'kido.png',
+    price: {
+      USD: 300.57,
+      NOK: 450.99,
+    },
+    category: 'kid',
+    type: 'kid',
+  },
+];
+
+export default kids;
