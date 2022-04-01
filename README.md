@@ -2,37 +2,30 @@
 
 ## Storex with Vue 3
 
-In this project, I will build an online shopping platform where users can buy clothing items and furniture.
+> This is an e-commerce website displaying a list of clothing items for men, women, and children. It also display some house furniture. Users can search for specific items using the search bar, add products to the shopping cart, and remove products from the shopping cart.
 
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Geting Started
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- **Project setup**
+    - `npm install`
 
-### Run your unit tests
-```
-npm run test:unit
-```
+- **Compiles and hot-reloads for development**
+    - `npm run serve`
 
-### Lints and fixes files
-```
-npm run lint
-```
-### Customize configuration
+- **Compiles and minifies for production**
+
+   - `npm run build`
+
+- **Lints and fixes files**
+   - `npm run lint`
+
+#### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## 🖥️ live Demo
+
+## 🖥️ Demo
 Here is the [live demo](https://blissful-aryabhata-17ce59.netlify.app/)
 
 
@@ -59,7 +52,7 @@ Here is the [live demo](https://blissful-aryabhata-17ce59.netlify.app/)
 
 ### Show your support
 
-Give a ⭐️ if you like this project!
+Give a 🌟 if you like this project!
 
 ## 📝 License
 
